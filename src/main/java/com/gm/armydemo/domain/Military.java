@@ -2,6 +2,8 @@ package com.gm.armydemo.domain;
 
 import java.io.Serializable;
 
+import com.gm.armydemo.domain.enums.Rank;
+
 public class Military implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
@@ -14,11 +16,11 @@ public class Military implements Serializable{
 		
 	}
 
-	public Military(Integer id, String name, String militaryId, Integer rank) {
+	public Military(Integer id, String name, String militaryId, Rank rank) {
 		this.id = id;
 		this.name = name;
 		this.militaryId = militaryId;
-		this.rank = rank;
+		this.rank = rank.getCode();
 	}
 
 	public Integer getId() {
@@ -45,12 +47,12 @@ public class Military implements Serializable{
 		this.militaryId = militaryId;
 	}
 
-	public Integer getRank() {
-		return rank;
+	public Rank getRank() {
+		return Rank.toEnum(rank);
 	}
 
-	public void setRank(Integer rank) {
-		this.rank = rank;
+	public void setRank(Rank rank) {
+		this.rank = rank.getCode();
 	}
 
 	@Override
